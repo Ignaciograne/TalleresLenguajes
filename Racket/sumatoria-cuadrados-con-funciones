@@ -1,0 +1,11 @@
+(define (cuadrado num)
+  (* num num))
+
+(define (pred num)
+  (- num 1))
+
+(define (sumar-cuad num)
+  (cond ((> num 0)
+         (+ (cuadrado num) (sumar-cuad (pred num))))
+        (else
+         0)))

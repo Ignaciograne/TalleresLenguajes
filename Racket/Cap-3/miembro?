@@ -1,0 +1,7 @@
+(define (miembro? ele lista)
+  (cond ((null? lista)
+         #f)
+        ((equal? ele (car lista))
+         #t)
+        (else
+         (miembro? ele (cdr lista)))))

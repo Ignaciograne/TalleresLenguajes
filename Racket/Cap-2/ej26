@@ -1,0 +1,12 @@
+(define (invertir num)
+  (cond ((zero? num)
+         0)
+        (else
+         (+ (* (remainder num 10) (expt 10 (largo num))) (invertir (quotient num 10)) )))
+)
+
+(define (largo num)
+  (cond ((zero? num)
+         -1)
+        (else
+         (+ 1 (largo (quotient num 10))))))

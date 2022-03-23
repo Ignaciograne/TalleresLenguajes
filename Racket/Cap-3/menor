@@ -1,0 +1,13 @@
+(define (menor lista)
+  (cond ((null? lista)
+         #f)
+        (else
+         (menor_aux lista (car lista)))))
+
+(define (menor_aux lista menor)
+  (cond ((null? lista)
+         menor)
+        ((> menor (car lista))
+         (menor_aux (cdr lista) (car lista)))
+        (else
+         (menor_aux (cdr lista) menor))))

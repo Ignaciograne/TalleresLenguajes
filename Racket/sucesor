@@ -1,0 +1,5 @@
+;; Sucesor
+; Un simple comentario
+
+(define (suc num)
+  (+ num 1))

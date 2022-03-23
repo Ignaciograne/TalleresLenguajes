@@ -1,0 +1,6 @@
+(define (invertir lista)
+  (cond ((null? lista)
+         '())
+        (else
+         (append (invertir (cdr lista))
+                 (list (car lista))))))

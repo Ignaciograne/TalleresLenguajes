@@ -1,0 +1,13 @@
+(define (mayor lista)
+  (cond ((null? lista)
+         #f)
+        (else
+         (mayor_aux lista (car lista)))))
+
+(define (mayor_aux lista mayor)
+  (cond ((null? lista)
+         mayor)
+        ((> (car lista) mayor)
+         (mayor_aux (cdr lista) (car lista)))
+        (else
+         (mayor_aux (cdr lista) mayor))))

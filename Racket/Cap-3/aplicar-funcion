@@ -1,0 +1,11 @@
+(define (aplicar-f fun lista)
+  (cond ((null? lista)
+         '())
+        (else
+         (cons (fun (car lista)) (aplicar-f fun (cdr lista))))))
+
+(define (suc num)
+  (+ num 1))
+
+(define (cuadrado num)
+  (* num num))

@@ -1,0 +1,7 @@
+(define (eliminar-prm ele lista)
+  (cond ((null? lista)
+         '())
+        ((equal? ele (car lista))
+         (cdr lista))
+        (else
+         (cons (car lista) (eliminar-prm ele (cdr lista))))))

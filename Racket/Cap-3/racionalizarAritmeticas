@@ -1,0 +1,47 @@
+(define (mcd num1 num2)
+  (cond ((zero? num2)
+         num1)
+        (else
+         (mcd num2 (remainder num1 num2)))))
+
+(define (hacer-rac num1 num2)
+  (let ((maxcd (mcd num1 num2)))
+    (list (/ num1 maxcd)
+          '/
+          (/ num2 maxcd))))
+
+;Obtener numerador y denominador
+(define (numerador num)
+  (car num))
+
+(define (denominador num)
+  (caddr num))
+
+;Operaciones aritméticas
+(define (equal-rac? num1 num2) ;Equal
+  (cond ((equal? num1 num2)
+         #t)
+        (else
+         #f)))
+
+(define (sum-rac num1 num2) ;Suma
+  (hacer-rac (+
+              (* (numerador num1) (denominador num2))
+              (* (denominador num1) (numerador num2))
+              )
+             (* (denominador num1) (denominador num2))))
+
+(define (rest-rac num1 num2) ;Resta
+  (hacer-rac (-
+              (* (numerador num1) (denominador num2))
+              (* (denominador num1) (numerador num2))
+              )
+             (* (denominador num1) (denominador num2))))
+
+(define (mult-rac num1 num2)
+  (hacer-rac (* (numerador num1) (numerador num2))
+             (* (denominador num1) (denominador num2))))
+
+(define (div-rac num1 num2)
+  (hacer-rac (* (numerador num1) (denominador num2))
+             (* (denominador num1) (numerador num2))))

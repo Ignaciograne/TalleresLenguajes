@@ -1,0 +1,11 @@
+(define (digitos num)
+  (cond ((integer? num)
+         (digitos_aux num))
+        (else
+         (digitos (* num 10)))))
+
+(define (digitos_aux num)
+  (cond ((zero? num)
+         0)
+        (else
+         (+ 1 (digitos_aux (quotient num 10))))))

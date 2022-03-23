@@ -1,0 +1,2 @@
+(define (solucion? fin ruta)
+  (equal? fin (car ruta)))

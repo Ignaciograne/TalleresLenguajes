@@ -1,0 +1,11 @@
+(define (suc num)
+  (+ num 1))
+
+(define (cuadrado num)
+  (* num num))
+
+(define (sumarf fun numIni numFin)
+  (cond ((< numIni numFin)
+        (+ (fun numIni) (sumarf fun (+ numIni 1) numFin)))
+        (else
+         (fun numFin))))

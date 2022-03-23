@@ -1,0 +1,2 @@
+(define (suc num)
+  (+ num 1))

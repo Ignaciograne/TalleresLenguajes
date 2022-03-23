@@ -1,0 +1,16 @@
+(define (primo num)
+  (cond ((or (= num 1) (= num 2))
+         #t)
+        ((zero? (remainder num 2))
+         #f)
+        (else
+         (primo_aux num 3))))
+
+(define (primo_aux num k)
+  (cond ((> num (* 2 k))
+         (cond ((zero? (remainder num k))
+               #f)
+         (else
+          (primo_aux num (+ k 2)))))
+        (else
+         #t)))

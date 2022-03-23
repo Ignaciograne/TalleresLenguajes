@@ -1,0 +1,7 @@
+(define (contar ele num)
+  (cond ((zero? num)
+         0)
+        ((equal? ele (remainder num 10))
+         (+ 1 (contar ele (quotient num 10))))
+        (else
+         (contar ele (quotient num 10)))))

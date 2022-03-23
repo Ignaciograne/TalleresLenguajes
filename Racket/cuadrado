@@ -1,0 +1,2 @@
+(define (cuadrado num)
+  (* num num))

@@ -1,0 +1,35 @@
+(define (nodo? ele arbol)
+  (cond ((null? arbol)
+         #f)
+        ((equal? ele (raiz arbol))
+         #t)
+        ((nodo? ele (hijo-izq arbol))
+         #t)
+        ((nodo? ele (hijo-der arbol))
+         #t)
+        (else
+         #f)))
+
+; Otro
+; Raiz e hijos
+(define (raiz arbol)
+  (cond ((atom? arbol)
+         arbol)
+        (else
+         (car arbol))))
+
+(define (hijo-izq arbol)
+  (cond ((atom? arbol)
+         '())
+        (else
+         (cadr arbol))))
+
+(define (hijo-der arbol)
+  (cond ((atom? arbol)
+         '())
+        (else
+         (caddr arbol))))
+
+; Atomo?
+(define (atom? ele)
+  (not (list? ele)))

@@ -1,0 +1,31 @@
+(define (equal-set? lista1 lista2)
+  (cond ((and (null? lista1) (null? lista2))
+         #t)
+        ((equal? (largo lista1) (largo lista2))
+         (equal-set_aux lista1 lista2))
+        (else
+         #f)))
+
+(define (equal-set_aux lista1 lista2)
+  (cond ((null? lista1)
+         #t)
+        ((miembro? (car lista1) lista2)
+         (equal-set_aux (cdr lista1) lista2))
+        (else
+         #f))
+)
+
+
+(define (miembro? ele lista)
+  (cond ((null? lista)
+         #f)
+        ((equal? ele (car lista))
+         #t)
+        (else
+         (miembro? ele (cdr lista)))))
+
+(define (largo lista)
+  (cond ((null? lista)
+         0)
+        (else
+         (+ 1 (largo (cdr lista))))))

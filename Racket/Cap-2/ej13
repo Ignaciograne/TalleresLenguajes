@@ -1,0 +1,6 @@
+(define (truncar num)
+  (cond ((integer? num)
+         num)
+        (else
+         )
+        ))

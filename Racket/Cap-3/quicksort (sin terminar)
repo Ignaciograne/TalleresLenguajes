@@ -1,0 +1,15 @@
+(define (pivot lista)
+  (cond ((null? lista)
+         #f)
+        (else
+         (pivot_aux (car lista) (cdr lista) '() '())))
+)
+
+(define (pivot_aux piv lista izq der)
+  (cond ((null? lista)
+         (list izq der))
+        ((< piv (car lista))
+         (pivot_aux piv (cdr lista) izq (cons (car lista) der)))
+        ((> piv (car lista))
+         (pivot_aux piv (cdr lista) (cons (car lista) izq) der)))
+)

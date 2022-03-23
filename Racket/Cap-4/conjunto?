@@ -1,0 +1,15 @@
+(define (conjunto? lista)
+  (cond ((null? lista)
+         #t)
+        ((miembro? (car lista) (cdr lista))
+         #f)
+        (else
+         (conjunto? (cdr lista)))))
+
+(define (miembro? ele lista)
+  (cond ((null? lista)
+         #f)
+        ((equal? ele (car lista))
+         #t)
+        (else
+         (miembro? ele (cdr lista)))))

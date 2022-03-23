@@ -1,0 +1,5 @@
+(define (sumar-intervalo numIni numFin)
+  (cond ((< numIni numFin)
+         (+ numFin (sumar-intervalo numIni (- numFin 1))))
+        (else
+         numFin)))

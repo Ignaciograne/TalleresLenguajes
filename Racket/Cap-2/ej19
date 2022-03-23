@@ -1,0 +1,27 @@
+(define (supp num)
+  (supp_aux num 1 0)
+)
+
+(define (supp_aux num cont suma)
+  (cond ((< suma num)
+         (cond ((prime? cont)
+                (+ 1 (supp_aux num (+ cont 1) (+ cont suma))))
+               (else
+                (supp_aux num (+ cont 1) suma))))
+        
+        (else
+         0)))
+
+(define (prime? num)
+  (cond ((= num 1)
+         #t)
+        (else
+         (prime_aux num 2))))
+
+(define (prime_aux num cont)
+  (cond ((= cont num)
+        #t)
+        ((= (remainder num cont) 0)
+         #f)
+        (else
+         (prime_aux num (+ cont 1)))))

@@ -1,0 +1,5 @@
+(define (abso num)
+  (cond ((>= num 0)
+        num)
+        (else
+         (* -1 num))))

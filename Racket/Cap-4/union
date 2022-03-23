@@ -1,0 +1,20 @@
+(define (union conj1 conj2)
+  (cond ((null? conj2)
+         conj1)
+        ((null? conj1)
+         conj2)
+        (else
+         (cond ((miembro? (car conj1) conj2)
+                (union (cdr conj1) conj2))
+               (else
+                (cons (car conj1) (union (cdr conj1) conj2))))))
+)
+
+(define (miembro? ele lista)
+  (cond ((null? lista)
+         #f)
+        ((equal? ele (car lista))
+         #t)
+        (else
+         (miembro? ele (cdr lista))))
+)

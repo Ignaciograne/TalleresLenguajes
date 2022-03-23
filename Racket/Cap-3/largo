@@ -1,0 +1,5 @@
+(define (largo lista)
+  (cond ((null? lista)
+         0)
+        (else
+         (+ 1 (largo (cdr lista))))))

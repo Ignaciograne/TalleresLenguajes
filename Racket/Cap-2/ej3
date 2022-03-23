@@ -1,0 +1,15 @@
+(define (elevar x n)
+  (cond ((integer? n)
+         (cond ((>= n 0)
+                (elevar_aux x n))
+               ((< n 0)
+                (/ 1 (elevar_aux x (* -1 n))))))
+        (else
+         (exp (* n (log x))))
+        ))
+
+(define (elevar_aux x n)
+  (cond ((> n 0)
+         (* x (elevar_aux x (- n 1))))
+        (else
+         1)))

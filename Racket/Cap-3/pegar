@@ -1,0 +1,9 @@
+#lang racket
+
+(define (pegar lista1 lista2)
+  (cond ((null? lista1)
+         lista2)
+        ((null? lista2)
+         lista1)
+        (else
+         (cons (car lista1) (pegar (cdr lista1) lista2)))))

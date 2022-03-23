@@ -1,0 +1,5 @@
+(define (digitos num)
+  (cond ((zero? num)
+         0)
+        (else
+         (+ 1 (digitos (quotient num 10))))))

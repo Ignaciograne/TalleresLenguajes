@@ -1,0 +1,53 @@
+(define (insertar ele arb)
+  (cond ((null? arb)
+         (arbol ele '() '()))
+        ((<= ele (raiz arb))
+         (arbol (raiz arb)
+                (insertar ele (hijo-izq arb))
+                (hijo-der arb)))
+        ((> ele (raiz arb))
+         (arbol (raiz arb)
+                (hijo-izq arb)
+                (insertar ele (hijo-der arb))))))
+
+; Arbol
+(define (arbol centro izq der)
+  (cond ((and (null? izq) (null? der))
+         centro)
+        (else
+         (list centro izq der))))
+
+; Otro
+; Raiz e hijos
+(define (raiz arbol)
+  (cond ((atom? arbol)
+         arbol)
+        (else
+         (car arbol))))
+
+(define (hijo-izq arbol)
+  (cond ((atom? arbol)
+         '())
+        (else
+         (cadr arbol))))
+
+(define (hijo-der arbol)
+  (cond ((atom? arbol)
+         '())
+        (else
+         (caddr arbol))))
+
+; Atomo?
+(define (atom? ele)
+  (not (list? ele)))
+
+; Hoja?
+(define (hoja? ele)
+  (cond ((null? ele)
+         #f)
+        ((atom? ele)
+         #t)
+        ((null? (cdr ele))
+         #t)
+        (else
+         #f)))

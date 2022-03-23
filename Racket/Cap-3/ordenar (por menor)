@@ -1,0 +1,27 @@
+(define (ordenar lista)
+  (cond ((null? lista)
+         '())
+        (else
+         (cons (menor lista) (ordenar (eliminar-prm (menor lista) lista))))))
+
+(define (eliminar-prm ele lista)
+  (cond ((null? lista)
+         '())
+        ((equal? ele (car lista))
+         (cdr lista))
+        (else
+         (cons (car lista) (eliminar-prm ele (cdr lista))))))
+
+(define (menor lista)
+  (cond ((null? lista)
+         #f)
+        (else
+         (menor_aux lista (car lista)))))
+
+(define (menor_aux lista menor)
+  (cond ((null? lista)
+         menor)
+        ((> menor (car lista))
+         (menor_aux (cdr lista) (car lista)))
+        (else
+         (menor_aux (cdr lista) menor))))

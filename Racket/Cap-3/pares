@@ -1,0 +1,7 @@
+(define (pares lista)
+  (cond ((null? lista)
+         '())
+        ((even? (car lista))
+         (cons (car lista) (pares (cdr lista))))
+        (else
+         (pares (cdr lista)))))

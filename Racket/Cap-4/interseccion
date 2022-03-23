@@ -1,0 +1,16 @@
+(define (interseccion conj1 conj2)
+  (cond ((or (null? conj1) (null? conj2))
+         '())
+        ((miembro? (car conj1) conj2)
+         (cons (car conj1) (interseccion (cdr conj1) conj2)))
+        (else
+         (interseccion (cdr conj1) conj2))))
+
+(define (miembro? ele lista)
+  (cond ((null? lista)
+         #f)
+        ((equal? ele (car lista))
+         #t)
+        (else
+         (miembro? ele (cdr lista))))
+)

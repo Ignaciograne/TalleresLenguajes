@@ -1,0 +1,43 @@
+(define (solucion? fin ruta)
+  (equal? fin (car ruta)))
+
+(define (vecinos ele grafo)
+  (let ((resultado (assoc ele grafo))
+        )
+    (cond ((equal? resultado #f)
+           #f)
+          (else
+           (cadr resultado)))))
+
+(define (extender ruta grafo)
+  (apply append (map (lambda(x)
+                       (cond ((miembro? x ruta) '())
+                             (else (list (cons x ruta)))))
+                     (vecinos (car ruta) grafo))))
+
+(define (miembro? ele lista)
+  (cond ((null? lista)
+         #f)
+        ((equal? ele (car lista))
+         #t)
+        (else
+         (miembro? ele (cdr lista)))))
+
+(define (anchura-todas ini fin grafo)
+  (anchura-todas_aux (list (list ini)) fin grafo '()))
+
+(define (anchura-todas_aux rutas fin grafo total)
+  (cond ((null? rutas)
+         (map reverse total))
+        ((solucion? fin (car rutas))
+         (anchura-todas_aux (cdr rutas)
+                         fin
+                         grafo
+                         (cons (car rutas) total)))
+        (else
+         (anchura-todas_aux (append
+                             (cdr rutas)
+                             (extender (car rutas) grafo))
+                            fin
+                            grafo
+                            total))))

@@ -1,0 +1,30 @@
+(define (mult-mat-mat mat1 mat2)
+  (cond ((null? mat1)
+         '())
+        (else
+         (cons (mult-vec-mat (car mat1) mat2) (mult-mat-mat (cdr mat1) mat2)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define (mult-vec-mat vec mat)
+  (cond ((or (null? vec) (null? mat))
+         #f)
+        (else
+         (mult-vec-mat_aux vec (transpuesta mat)))))
+
+(define (mult-vec-mat_aux vec mat)
+  (cond ((null? mat)
+         '())
+         (else
+          (cons (mult-vec-vec vec (car mat)) (mult-vec-mat_aux vec (cdr mat))))))
+
+(define (transpuesta mat)
+  (cond ((null? (car mat))
+         '())
+        (else
+         (cons (map car mat) (transpuesta (map cdr mat))))))
+
+(define (mult-vec-vec vec1 vec2)
+  (cond ((and (null? vec1) (null? vec2))
+         0)
+        (else
+         (+ (* (car vec1) (car vec2)) (mult-vec-vec (cdr vec1) (cdr vec2))))))

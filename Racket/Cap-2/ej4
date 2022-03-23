@@ -1,0 +1,6 @@
+(define (int cap i n)
+  (cond ((> n 0)
+         (int (+ cap (* cap i)) i (- n 1)))
+        (else
+         cap)))
+         

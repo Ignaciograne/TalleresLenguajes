@@ -1,0 +1,5 @@
+(define (pot num ele)
+  (cond ((> ele 0)
+         (* num (pot num (- ele 1))))
+        (else
+         1)))

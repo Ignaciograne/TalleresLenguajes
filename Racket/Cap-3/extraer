@@ -1,0 +1,7 @@
+(define (extraer index lista)
+  (cond ((null? lista)
+         #f)
+        ((equal? index 1)
+         (car lista))
+        (else
+         (extraer (- index 1) (cdr lista)))))

@@ -1,0 +1,5 @@
+(define (suma-vec vec1 vec2)
+  (cond ((and (null? vec1) (null? vec2))
+         '())
+        (else
+         (cons (+ (car vec1) (car vec2)) (suma-vec (cdr vec1) (cdr vec2))))))

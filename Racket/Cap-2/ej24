@@ -1,0 +1,14 @@
+(define (div3 num)
+  (div3_aux num num))
+
+(define (div3_aux num sum)
+  (cond ((zero? num)
+         (cond ((< sum 10)
+                (cond ((or (equal? sum 3) (equal? sum 6) (equal? sum 9))
+                       #t)
+                      (else
+                       #f)))
+               (else
+                (div3_aux sum 0))))
+        (else
+         (div3_aux (quotient num 10) (+ sum (remainder num 10))))))

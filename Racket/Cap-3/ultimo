@@ -1,0 +1,16 @@
+(define (ultimo lista)
+  (extraer (largo lista) lista))
+
+(define (extraer index lista)
+  (cond ((null? lista)
+         #f)
+        ((equal? index 1)
+         (car lista))
+        (else
+         (extraer (- index 1) (cdr lista)))))
+
+(define (largo lista)
+  (cond ((null? lista)
+         0)
+        (else
+         (+ 1 (largo (cdr lista))))))

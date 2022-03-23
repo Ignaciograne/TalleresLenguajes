@@ -1,0 +1,22 @@
+(define (cuantosPrimos numIni numFin)
+  (cond ((<= numIni numFin)
+         (cond ((prime numIni)
+                (+ 1 (cuantosPrimos (+ numIni 1) numFin)))
+               (else
+                (cuantosPrimos (+ numIni 1) numFin))))
+        (else
+         0)))
+
+(define (prime num)
+  (cond ((= num 1)
+         #t)
+        (else
+         (prime_aux num 2))))
+
+(define (prime_aux num cont)
+  (cond ((= cont num)
+        #t)
+        ((= (remainder num cont) 0)
+         #f)
+        (else
+         (prime_aux num (+ cont 1)))))

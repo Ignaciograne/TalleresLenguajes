@@ -1,0 +1,5 @@
+(define (sumd num)
+  (cond ((zero? num)
+         0)
+        (else
+         (+ (remainder num 10) (sumd (quotient num 10))))))

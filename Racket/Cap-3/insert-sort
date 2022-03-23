@@ -1,0 +1,22 @@
+(define (insert-sort lista)
+  (cond ((null? lista)
+        '())
+        (else
+         (insert-sort_aux lista '())))
+)
+
+(define (insert-sort_aux lista resultado)
+  (cond ((null? lista)
+         resultado)
+        (else
+         (insert-sort_aux (cdr lista) (insertar-lista-ordenada (car lista) resultado))))
+)
+
+(define (insertar-lista-ordenada ele lista)
+  (cond ((null? lista)
+         (cons ele lista))
+        ((> ele (car lista))
+         (cons (car lista) (insertar-lista-ordenada ele (cdr lista))))
+        (else
+         (cons ele lista)))
+)

@@ -1,0 +1,6 @@
+(define (func x y)
+  (let ( (a (- 1 y))
+         (b (+ 1 y)))
+  (+ (* y a)
+     (* a b)
+     (* 2 x b b))))

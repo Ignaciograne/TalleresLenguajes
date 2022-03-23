@@ -1,0 +1,11 @@
+(define (pot x n)
+  (cond ((even? n)
+         (* (pot_aux x (quotient n 2)) (pot_aux x (quotient n 2))))
+        (else
+         (* x (pot_aux x (quotient n 2)) (pot_aux x (quotient n 2))))))
+
+(define (pot_aux x n)
+  (cond ((> n 0)
+         (* x (pot_aux x (- n 1))))
+        (else
+         1)))

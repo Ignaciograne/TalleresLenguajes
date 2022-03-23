@@ -1,0 +1,2 @@
+(define (fermat n)
+  (+ 1 (expt 2 (expt 2 n))))

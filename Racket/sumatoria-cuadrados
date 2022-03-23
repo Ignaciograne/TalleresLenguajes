@@ -1,0 +1,5 @@
+(define (sumar-cuad num)
+  (cond ((> num 0)
+         (+ (* num num) (sumar-cuad (- num 1))))
+        (else
+         0)))

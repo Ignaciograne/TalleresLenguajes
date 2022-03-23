@@ -1,0 +1,2 @@
+(define (pred num)
+  (- num 1))

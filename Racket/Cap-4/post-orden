@@ -1,0 +1,34 @@
+; Raiz e hijos
+(define (raiz arbol)
+  (cond ((atom? arbol)
+         arbol)
+        (else
+         (car arbol))))
+
+(define (hijo-izq arbol)
+  (cond ((atom? arbol)
+         '())
+        (else
+         (cadr arbol))))
+
+(define (hijo-der arbol)
+  (cond ((atom? arbol)
+         '())
+        (else
+         (caddr arbol))))
+
+; Atomo?
+(define (atom? ele)
+  (not (list? ele)))
+
+; Ordenar notacion (Prefija -> Postfija)
+(define (post-orden arbol)
+  (cond ((null? arbol)
+         '())
+        ((atom? arbol)
+         arbol)
+        (else
+         (cons (post-orden (hijo-der arbol))
+               (cons (post-orden (hijo-izq arbol))
+                     (cons (raiz arbol)
+                           '()))))))

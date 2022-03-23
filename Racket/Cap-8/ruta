@@ -1,0 +1,38 @@
+(define (solucion? fin ruta)
+  (equal? fin (car ruta)))
+
+(define (vecinos ele grafo)
+  (let ((resultado (assoc ele grafo))
+        )
+    (cond ((equal? resultado #f)
+           #f)
+          (else
+           (cadr resultado)))))
+
+(define (extender ruta grafo)
+  (apply append (map (lambda(x)
+                       (cond ((miembro? x ruta) '())
+                             (else (list (cons x ruta)))))
+                     (vecinos (car ruta) grafo))))
+
+(define (miembro? ele lista)
+  (cond ((null? lista)
+         #f)
+        ((equal? ele (car lista))
+         #t)
+        (else
+         (miembro? ele (cdr lista)))))
+
+(define (prof ini fin grafo)
+  (prof-aux (list (list ini)) fin grafo))
+
+(define (prof-aux rutas fin grafo)
+  (cond ((null? rutas)
+         '())
+        ((solucion? fin (car rutas))
+         (reverse (car rutas)))
+        (else
+         (prof-aux (append (extender (car rutas) grafo)
+                           (cdr rutas))
+                   fin
+                   grafo))))

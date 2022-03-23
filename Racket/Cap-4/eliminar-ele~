@@ -1,0 +1,65 @@
+#lang racket
+
+(define (eliminar ele arb)
+  (cond ((null? arb)
+         '())
+
+        ((< ele (raiz arb))
+         (arbol (raiz arb)
+                (eliminar ele (hijo-izq arb))
+                (hijo-der arb)))
+        ((> ele (raiz arb))
+         (arbol (raiz arb)
+                (hijo-izq arb)
+                (eliminar ele (hijo-der arb))))
+        
+        ((and (null? (hijo-izq arb)) (null? (hijo-der arb)))
+         '())
+        ((null? (hijo-izq arb))
+         (hijo-der arb))
+        ((null? (hijo-der arb))
+         (hijo-izq arb))
+        (else
+         (let ((nueva-raiz (mayor (hijo-izq arb))))
+               (arbol nueva-raiz
+                      (eliminar nueva-raiz (hijo-izq arb))
+                      (hijo-der arb))))))
+
+; Mayor
+(define (mayor arb)
+  (cond ((null? arb)
+         #f)
+        ((null? (hijo-der arb))
+        (raiz arb))
+        (else
+         (mayor (hijo-der arb)))))
+
+; Arbol
+(define (arbol centro izq der)
+  (cond ((and (null? izq) (null? der))
+         centro)
+        (else
+         (list centro izq der))))
+
+; Raiz e hijos
+(define (raiz arbol)
+  (cond ((atom? arbol)
+         arbol)
+        (else
+         (car arbol))))
+
+(define (hijo-izq arbol)
+  (cond ((atom? arbol)
+         '())
+        (else
+         (cadr arbol))))
+
+(define (hijo-der arbol)
+  (cond ((atom? arbol)
+         '())
+        (else
+         (caddr arbol))))
+
+; Atomo?
+(define (atom? ele)
+  (not (list? ele)))

@@ -1,0 +1,5 @@
+(define (oddOrEven num)
+  (cond ((= (remainder num 2) 0)
+        #t)
+        (else
+         #f)))

@@ -1,0 +1,17 @@
+(define (cercanos num1 num2)
+  (cond ((equal? (componer num1) (componer num2))
+         #t)
+        (else
+         #f))
+)
+
+(define (componer num)
+  (componer_aux num 1))
+
+(define (componer_aux num cont)
+  (cond ((equal? num cont)
+         0)
+        ((integer? (/ num cont))
+         (+ cont (componer_aux num (+ cont 1))))
+        (else
+         (componer_aux num (+ cont 1)))))

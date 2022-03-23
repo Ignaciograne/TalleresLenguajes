@@ -1,0 +1,5 @@
+(define (sumar-coc num)
+  (cond ((> num 0)
+         (+ (/ 1 (* num (+ num 1))) (sumar-coc (- num 1))))
+        (else
+         0)))

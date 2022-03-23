@@ -1,0 +1,15 @@
+(define (equal-vec? vec1 vec2)
+  (cond ((and (null? vec1) (null? vec2))
+         #t)
+        ((not (equal? (largo vec1) (largo vec2)))
+         #f)
+        ((not (equal? (car vec1) (car vec2)))
+         #f)
+        (else
+         (equal-vec? (cdr vec1) (cdr vec2)))))
+
+(define (largo vec)
+  (cond ((null? vec)
+        0)
+        (else
+         (+ 1 (largo (cdr vec))))))

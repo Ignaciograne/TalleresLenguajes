@@ -1,0 +1,21 @@
+(define (sumardd ele num)
+  (sumardd_aux ele num 0)
+)
+
+(define (sumardd_aux ele num cont)
+  (cond ((zero? num)
+         0)
+        (else
+         (+ (* (verificar_suma ele num) (expt 10 cont)) (sumardd_aux ele (quotient num 10) (+ cont 1)) )))
+)
+
+(define (verificar_suma ele num)
+  (let ((digito (+ ele (remainder num 10))))
+    (cond ((> digito 10)
+           (obtener_insig digito))
+          (else
+           digito)))
+)
+
+(define (obtener_insig num)
+  (remainder num 10))

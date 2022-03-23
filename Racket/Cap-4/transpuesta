@@ -1,0 +1,42 @@
+;;Primera forma
+(define (transpuesta mat)
+  (cond ((null? (car mat))
+         '())
+        (else
+         (cons (aplicar-f car mat) (transpuesta (aplicar-f cdr mat))))))
+
+(define (aplicar-f fun mat)
+  (cond ((null? mat)
+         '())
+        (else
+         (cons (fun (car mat))
+               (aplicar-f fun (cdr mat))))))
+
+;;Forma extra de la primera forma (Con MAP).
+(define (transpuestaExtra mat)
+  (cond ((null? (car mat))
+         '())
+        (else
+         (cons (map car mat) (transpuesta (map cdr mat))))))
+
+
+;;Segunda forma
+(define (transpuesta2 mat)
+  (cond ((null? (car mat))
+         '())
+        (else
+         (cons (sacar-1f mat) (transpuesta (borrar-1f mat))))))
+
+(define (sacar-1f mat)
+  (cond ((null? mat)
+        '())
+        (else
+         (cons (car (car mat))
+               (sacar-1f (cdr mat))))))
+
+(define (borrar-1f mat)
+  (cond ((null? mat)
+         '())
+        (else
+         (cons (cdr (car mat))
+               (borrar-1f (cdr mat))))))
